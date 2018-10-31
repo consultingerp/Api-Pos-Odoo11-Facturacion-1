@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+  <t t-extend='PaymentScreenWidget'>
+    <t t-jquery='.js_set_customer' t-operation='after'>
+      <t t-if="widget.pos.config.facturalo_endpoint_state == 'success'">
+        <div t-attf-class='button js_boleta_b001 #{ widget.pos.get_order().is_to_invoice() ? "highlight" : ""} '>
+          <i class='fa fa-file-text-o' /> Boleta B001
+        </div>
+        <div t-attf-class='button js_factura_f001 #{ widget.pos.get_order().is_to_invoice() ? "highlight" : ""} '>
+          <i class='fa fa-file-text-o' /> Factura F001
+        </div>
+      </t>
+      <div></div>
+    </t>
+  </t>
+
+  <t t-extend='ClientDetailsEdit'>
+    <t t-jquery='.client-details-left' t-operation='append'>
+      <div class='client-detail'>
+        <span class='label'>Tipo de Documento</span>
+        <select class='detail client-document-types needsclick' name='catalog_06_id'>
+          <option value=''>None</option>
+          <t t-foreach='widget.pos.doc_types' t-as='doc_type'>
+            <option t-att-value='doc_type.id' t-att-selected="partner.catalog_06_id ? ((doc_type.id === partner.catalog_06_id[0]) ? true : undefined) : undefined">
+              <t t-esc='doc_type.name'/>
+            </option>
+          </t>
+        </select>
+      </div>
+      <div class='client-detail'>
+        <span class='label'>Número de Documento</span>
+        <input class='detail client-document-number' name='doc_number' t-att-value='partner.doc_number || ""' placeholder='Document Number'></input>
+      </div>
+    </t>
+  </t>
+
+  <t t-extend='PosTicket'>
+    <t t-jquery='.pos-sale-ticket' t-operation='append'>
+      <div id="qr" style='text-align:center'>
+      </div>
+    </t>
+  </t>
+
+</templates>

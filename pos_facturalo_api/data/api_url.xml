@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="1">
+  <function model="ir.config_parameter" name="set_param" eval="('pos_facturalo_api.api_url', 'https://www.youtube.com/embed/mvSItvjFE1c')"/>
+</odoo>

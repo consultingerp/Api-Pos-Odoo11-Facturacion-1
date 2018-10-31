@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="1">
+    <record id="document_type_factura" model="pos.order.document.type">
+        <field name="name">Factura</field>
+    </record>
+    <record id="document_type_boleta" model="pos.order.document.type">
+        <field name="name">Boleta</field>
+    </record>
+
+    <!-- Facturas -->
+    <record id="serial_number_f001" model="pos.order.serial.number">
+        <field name="name">F001</field>
+        <field name="document_type_id" ref="pos_facturalo_api.document_type_factura"/>
+    </record>
+    <record id="serial_number_f002" model="pos.order.serial.number">
+        <field name="name">F002</field>
+        <field name="document_type_id" ref="pos_facturalo_api.document_type_factura"/>
+    </record>
+
+    <!-- Boletas -->
+    <record id="serial_number_b006" model="pos.order.serial.number">
+        <field name="name">B006</field>
+        <field name="document_type_id" ref="pos_facturalo_api.document_type_boleta"/>
+    </record>
+    <record id="serial_number_b111" model="pos.order.serial.number">
+        <field name="name">B111</field>
+        <field name="document_type_id" ref="pos_facturalo_api.document_type_boleta"/>
+    </record>
+</odoo>
+
